@@ -1,0 +1,20 @@
+<div class="card" id="card">
+<div class="card-header">{{germ.name}}</div>
+
+<div class="card-body">
+<p>{{germ.price | currency}}</p>
+<img src="{{germ.fullImagePath}}" />
+<p>{{germ.description}}</p>
+<h6>Colors available</h6>
+<ul>
+    <li *ngFor="let color of germ.colors">{{color}}</li>
+</ul>
+</div>
+
+<app-tabs [germ] = "germ"></app-tabs>
+
+<p>{{germ.inventory}}</p>
+<button *ngIf="germ.inventory > 0" class="btn btn-default" (click)= addToCart()>Add to Cart</button>
+<button *ngIf="germ.inventory <= 0" class="btn btn-danger disabled" (click)= "germ.inventory=germ.inventory+1">Sold Out</button>
+</div>
+
